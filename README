@@ -1,0 +1,27 @@
+# Decryption
+Decryption of strings
+
+
+	-- Task 1: XOR between two byte strings (one time pad)
+
+	It takes a string as input, which contains both the string to be decrypted and the key (they have the same length). So, the program goes through the input string up to the separating character (0x00) between the string to be decrypted and the key. Then, it extracts one byte at a time from the string and one from the key, performs the XOR operation between them and the result overwrites the byte from the orginial string.
+
+
+	-- Task 2: Rolling XOR (cipher block chaining)
+
+	This method implies using the encryption result of a data block to encrypt the next data block (using the XOR operation).
+
+	So, the program goes through the input string to be decrypted. First byte remains the same. It saves the next encrypted byte, it perfoms the XOR operation between next encrypted byte and the current byte before decryption and the result overwrite the curent position.
+
+
+	-- Task 5: XOR Bruteforce with one byte key
+
+	-> decrypted message to be returned contains the word "force"
+	-> program returns decrypted message and the key used to obtain it
+
+	The program goes through all possible values for a one byte key (0 - 255). It performs string decryption for each key, then searches for "force" word in the decrypted string. In case of finding the word, the key is saved and it displays the decrypted word and the key. Otherwise, it performs the same operation to restore the original string and continues searching for the key.
+
+
+	-- Task 6: Vigenere Cipher
+
+	Within this task, the program goes through the key and the string to be decrypted at the same time. If the key is shorter than the string, it will be repeated until it has the same length as the string. It extracts one byte at a time from the string and one from the key. It finds the difference between the key byte and the 'a' character, then this value is subtracted from the byte value extracted from string. If the resulting value is outside the 'a-z' range, it will add 26 (number of elements in the range) to return in the range, at the right character. The resulting byte is introduced back in the string and continues decryption of the remaining bytes except for those outside 'a-z' range. Basically, decryption is realised through left rotation with a specific value for each byte, value calculated from the key.
